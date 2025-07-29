@@ -346,7 +346,7 @@ function App() {
       </header>
 
       {/* Section 2: About Us */}
-      {/* <section id="about" className="py-4 bg-white border-bottom">
+      <section id="about" className="py-4 bg-white border-bottom">
         <div className="container">
           <div className="text-center">
             <div className="mb-4">
@@ -393,7 +393,7 @@ function App() {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Section 3: Core Expertise */}
       {/* <section className="py-5 bg-light border-bottom">
