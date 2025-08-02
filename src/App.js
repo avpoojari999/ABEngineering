@@ -350,8 +350,12 @@ function App() {
         <div className="container">
           <div className="text-center">
             <div className="mb-4">
-              <div className="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{width: '80px', height: '80px'}}>
-                <i className="fas fa-industry fa-3x text-white"></i>
+              <div className="rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{width: '80px', height: '80px'}}>
+                 <img
+                   src="/logo192.png"
+                   alt="AB Engineering Logo"
+                   style={{ width: '80px', height: '80px', objectFit: 'contain', borderRadius: '50%' }}
+                 />
               </div>
               <h2 className="fw-bold mb-2 text-primary">About Us</h2>
               <div className="d-flex align-items-center justify-content-center">
