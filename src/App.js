@@ -312,7 +312,38 @@ We'll provide you with a comprehensive quote based on your specific requirements
         <div className="container position-relative" style={{zIndex: 2}}>
           <div className="row align-items-center">
             <div className="col-lg-6 text-center text-lg-start">
-              <h1 className="display-2 fw-semibold mb-4 text-dark" style={{letterSpacing: '3px', lineHeight: '1.2', fontWeight: 300}}>A. B. Engineering Works</h1>
+              <div className="mb-4 text-center">
+  <div
+    className="rounded-circle d-inline-flex align-items-center justify-content-center"
+    style={{
+      width: '120px',
+      height: '120px',
+      boxShadow: '0 2px 16px rgba(0,0,0,0.06)'
+    }}
+  >
+    <img
+      src="/logo192.png"
+      alt="A. B. Engineering Works Logo"
+      style={{
+        width: '200px',
+        height: '200px',
+        objectFit: 'contain',
+        borderRadius: '50%'
+      }}
+    />
+  </div>
+  <div
+    className="fw-semibold text-dark mt-2"
+    style={{
+      fontSize: '2rem',
+      letterSpacing: '2px',
+      lineHeight: '1.2',
+      textAlign: 'center'
+    }}
+  >
+    Engineering Works
+  </div>
+</div>
               <p className="lead mb-4 fs-3 text-dark" style={{lineHeight: '1.6'}}>Manufacturer of Ampoule and Vial Machineries Spare Parts &amp; Repairing Contractors</p>
               
               <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start">
