@@ -333,7 +333,7 @@ We'll provide you with a comprehensive quote based on your specific requirements
     />
   </div>
   <div
-    className="fw-semibold text-dark mt-2"
+    className="fw-bold text-dark mt-2"
     style={{
       fontSize: '2rem',
       letterSpacing: '2px',
@@ -341,7 +341,7 @@ We'll provide you with a comprehensive quote based on your specific requirements
       textAlign: 'center'
     }}
   >
-    Engineering Works
+    <h1><b>Engineering Works</b></h1>
   </div>
 </div>
               <p className="lead mb-4 fs-3 text-dark" style={{lineHeight: '1.6'}}>Manufacturer of Ampoule and Vial Machineries Spare Parts &amp; Repairing Contractors</p>
