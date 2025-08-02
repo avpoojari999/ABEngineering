@@ -1,217 +1,217 @@
-// import React, { useState } from 'react';
-// import emailjs from 'emailjs-com';
+import React, { useState } from 'react';
+import emailjs from 'emailjs-com';
 import './App.css';
 
 function App() {
-  // const [isChatOpen, setIsChatOpen] = useState(false);
-  // const [messages, setMessages] = useState([
-  //   { text: "Hello! I'm your AI assistant. How can I help you with AB Engineering Works today?", isBot: true }
-  // ]);
-  // const [inputMessage, setInputMessage] = useState('');
-  // const [showContactForm, setShowContactForm] = useState(false);
-  // const [contactForm, setContactForm] = useState({ name: '', contact: '', query: '' });
-  // const [connectForm, setConnectForm] = useState({ name: '', contact: '', message: '' });
-  // const [connectFormStatus, setConnectFormStatus] = useState(null);
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [messages, setMessages] = useState([
+    { text: "Hello! I'm your AI assistant. How can I help you with AB Engineering Works today?", isBot: true }
+  ]);
+  const [inputMessage, setInputMessage] = useState('');
+  const [showContactForm, setShowContactForm] = useState(false);
+  const [contactForm, setContactForm] = useState({ name: '', contact: '', query: '' });
+  const [connectForm, setConnectForm] = useState({ name: '', contact: '', message: '' });
+  const [connectFormStatus, setConnectFormStatus] = useState(null);
 
-  // const handleSendMessage = () => {
-  //   if (inputMessage.trim() === '') return;
+  const handleSendMessage = () => {
+    if (inputMessage.trim() === '') return;
 
     // Add user message
-//     const userMessage = { text: inputMessage, isBot: false };
-//     setMessages([...messages, userMessage]);
-//     setInputMessage('');
+    const userMessage = { text: inputMessage, isBot: false };
+    setMessages([...messages, userMessage]);
+    setInputMessage('');
 
-//     // Simulate AI response
-//     setTimeout(() => {
-//       const botResponse = getBotResponse(inputMessage);
-//       setMessages(prev => [...prev, { text: botResponse, isBot: true }]);
-//     }, 1000);
-//   };
+    // Simulate AI response
+    setTimeout(() => {
+      const botResponse = getBotResponse(inputMessage);
+      setMessages(prev => [...prev, { text: botResponse, isBot: true }]);
+    }, 1000);
+  };
 
-//   const sendEmail = async (emailData) => {
-//     try {
-//       // Initialize EmailJS (you'll need to replace with your actual user ID)
-//       emailjs.init('nqO5yHw6zjGGzJW46'); // Replace with your EmailJS user ID
+  const sendEmail = async (emailData) => {
+    try {
+      // Initialize EmailJS (you'll need to replace with your actual user ID)
+      emailjs.init('nqO5yHw6zjGGzJW46'); // Replace with your EmailJS user ID
       
-//       const templateParams = {
-//         to_email: 'info@abenginworks.com',
-//         from_name: emailData.name,
-//         from_email: emailData.contact,
-//         message: emailData.query,
-//         original_question: emailData.originalQuestion
-//       };
+      const templateParams = {
+        to_email: 'info@abenginworks.com',
+        from_name: emailData.name,
+        from_email: emailData.contact,
+        message: emailData.query,
+        original_question: emailData.originalQuestion
+      };
 
-//       const response = await emailjs.send(
-//         'service_iy2g1ur', // Replace with your EmailJS service ID
-//         'template_ap0nqht', // Replace with your EmailJS template ID
-//         templateParams
-//       );
+      const response = await emailjs.send(
+        'service_iy2g1ur', // Replace with your EmailJS service ID
+        'template_ap0nqht', // Replace with your EmailJS template ID
+        templateParams
+      );
 
-//       if (response.status === 200) {
-//         console.log('Email sent successfully');
-//         return true;
-//       } else {
-//         console.error('Failed to send email');
-//         return false;
-//       }
-//     } catch (error) {
-//       console.error('Error sending email:', error);
-//       return false;
-//     }
-//   };
+      if (response.status === 200) {
+        console.log('Email sent successfully');
+        return true;
+      } else {
+        console.error('Failed to send email');
+        return false;
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+      return false;
+    }
+  };
 
-//   const handleContactFormSubmit = async () => {
-//     if (contactForm.name.trim() === '' || contactForm.contact.trim() === '' || contactForm.query.trim() === '') {
-//       setMessages(prev => [...prev, { 
-//         text: "Please provide your name, contact details, and query.", 
-//         isBot: true 
-//       }]);
-//       return;
-//     }
+  const handleContactFormSubmit = async () => {
+    if (contactForm.name.trim() === '' || contactForm.contact.trim() === '' || contactForm.query.trim() === '') {
+      setMessages(prev => [...prev, { 
+        text: "Please provide your name, contact details, and query.", 
+        isBot: true 
+      }]);
+      return;
+    }
 
-//     // Add loading message
-//     setMessages(prev => [...prev, { 
-//       text: "Sending your inquiry...", 
-//       isBot: true 
-//     }]);
+    // Add loading message
+    setMessages(prev => [...prev, { 
+      text: "Sending your inquiry...", 
+      isBot: true 
+    }]);
 
-//     // Prepare email data
-//     const emailData = {
-//       name: contactForm.name,
-//       contact: contactForm.contact,
-//       query: contactForm.query,
-//       originalQuestion: messages[messages.length - 1].text
-//     };
+    // Prepare email data
+    const emailData = {
+      name: contactForm.name,
+      contact: contactForm.contact,
+      query: contactForm.query,
+      originalQuestion: messages[messages.length - 1].text
+    };
 
-//     // Send email
-//     const emailSent = await sendEmail(emailData);
+    // Send email
+    const emailSent = await sendEmail(emailData);
 
-//     if (emailSent) {
-//       setMessages(prev => [...prev, { 
-//         text: `Thank you ${contactForm.name}! Your inquiry has been sent to our team. We'll contact you at ${contactForm.contact} within 24 hours.`, 
-//         isBot: true 
-//       }]);
-//     } else {
-//       setMessages(prev => [...prev, { 
-//         text: `Thank you ${contactForm.name}! Your inquiry has been recorded. Please also contact us directly at 8108765006 or abengworks@yahoo.in for immediate assistance.`, 
-//         isBot: true 
-//       }]);
-//     }
+    if (emailSent) {
+      setMessages(prev => [...prev, { 
+        text: `Thank you ${contactForm.name}! Your inquiry has been sent to our team. We'll contact you at ${contactForm.contact} within 24 hours.`, 
+        isBot: true 
+      }]);
+    } else {
+      setMessages(prev => [...prev, { 
+        text: `Thank you ${contactForm.name}! Your inquiry has been recorded. Please also contact us directly at 8108765006 or abengworks@yahoo.in for immediate assistance.`, 
+        isBot: true 
+      }]);
+    }
 
-//     // Reset form
-//     setContactForm({ name: '', contact: '', query: '' });
-//     setShowContactForm(false);
-//   };
+    // Reset form
+    setContactForm({ name: '', contact: '', query: '' });
+    setShowContactForm(false);
+  };
 
-//   const handleConnectFormSubmit = async (e) => {
-//     e.preventDefault();
-//     if (!connectForm.name.trim() || !connectForm.contact.trim() || !connectForm.message.trim()) {
-//       setConnectFormStatus({ success: false, message: 'Please fill in all fields.' });
-//       return;
-//     }
-//     setConnectFormStatus(null);
-//     // Use the same sendEmail function as chatbot
-//     const emailData = {
-//       name: connectForm.name,
-//       contact: connectForm.contact,
-//       query: connectForm.message,
-//       originalQuestion: 'Contact Form Submission from Connect With Us section'
-//     };
-//     const emailSent = await sendEmail(emailData);
-//     if (emailSent) {
-//       setConnectFormStatus({ success: true, message: 'Thank you! Your message has been sent. We will contact you soon.' });
-//       setConnectForm({ name: '', contact: '', message: '' });
-//     } else {
-//       setConnectFormStatus({ success: false, message: 'Sorry, there was an error sending your message. Please try again later or contact us directly.' });
-//     }
-//   };
+  const handleConnectFormSubmit = async (e) => {
+    e.preventDefault();
+    if (!connectForm.name.trim() || !connectForm.contact.trim() || !connectForm.message.trim()) {
+      setConnectFormStatus({ success: false, message: 'Please fill in all fields.' });
+      return;
+    }
+    setConnectFormStatus(null);
+    // Use the same sendEmail function as chatbot
+    const emailData = {
+      name: connectForm.name,
+      contact: connectForm.contact,
+      query: connectForm.message,
+      originalQuestion: 'Contact Form Submission from Connect With Us section'
+    };
+    const emailSent = await sendEmail(emailData);
+    if (emailSent) {
+      setConnectFormStatus({ success: true, message: 'Thank you! Your message has been sent. We will contact you soon.' });
+      setConnectForm({ name: '', contact: '', message: '' });
+    } else {
+      setConnectFormStatus({ success: false, message: 'Sorry, there was an error sending your message. Please try again later or contact us directly.' });
+    }
+  };
 
-//   const getBotResponse = (userMessage) => {
-//     const message = userMessage.toLowerCase();
+  const getBotResponse = (userMessage) => {
+    const message = userMessage.toLowerCase();
     
-//     // Product/Service related questions
-//     if (message.includes('product') || message.includes('service') || message.includes('work') || 
-//         message.includes('manufacture') || message.includes('spare') || message.includes('parts') ||
-//         message.includes('burner') || message.includes('chuck') || message.includes('shaft') ||
-//         message.includes('assembly') || message.includes('device') || message.includes('machine')) {
-//       return `Here's our comprehensive product range:
+    // Product/Service related questions
+    if (message.includes('product') || message.includes('service') || message.includes('work') || 
+        message.includes('manufacture') || message.includes('spare') || message.includes('parts') ||
+        message.includes('burner') || message.includes('chuck') || message.includes('shaft') ||
+        message.includes('assembly') || message.includes('device') || message.includes('machine')) {
+      return `Here's our comprehensive product range:
 
-// 🔥 All Types of Burners
-// ⚙️ Upper Chuck Spares
-// ⚙️ Lower Chuck Spares
-// 🔧 Shafts
-// 💻 Device Assemblies
-// 🔨 Construction Devices
-// 🏭 SM-3 Machine Spares
-// ⭐ Custom-designed Parts
+🔥 All Types of Burners
+⚙️ Upper Chuck Spares
+⚙️ Lower Chuck Spares
+🔧 Shafts
+💻 Device Assemblies
+🔨 Construction Devices
+🏭 SM-3 Machine Spares
+⭐ Custom-designed Parts
 
-// All parts are engineered for maximum efficiency and durability. For specific requirements or quotes, please contact us directly.`;
-//     }
+All parts are engineered for maximum efficiency and durability. For specific requirements or quotes, please contact us directly.`;
+    }
     
-//     // Contact information
-//     else if (message.includes('contact') || message.includes('phone') || message.includes('call') || 
-//              message.includes('number') || message.includes('reach')) {
-//       return `📞 Contact Information:
-// Phone: 8108765006 | 9819214375
-// Email: abengworks@yahoo.in | abenginworks@gmail.com
+    // Contact information
+    else if (message.includes('contact') || message.includes('phone') || message.includes('call') || 
+             message.includes('number') || message.includes('reach')) {
+      return `📞 Contact Information:
+Phone: 8108765006 | 9819214375
+Email: abengworks@yahoo.in | abenginworks@gmail.com
 
-// We're here to help with all your inquiries!`;
-//     }
+We're here to help with all your inquiries!`;
+    }
     
-//     // Location/Address
-//     else if (message.includes('location') || message.includes('address') || message.includes('where') || 
-//              message.includes('place') || message.includes('office')) {
-//       return `📍 Our Location:
-// A - 1/2, Shivaji industrial estate, chhabra compound, chhatrapati shivaji Maharaj Marg, Vakola bridge, Santacruz East, Mumbai -400055
+    // Location/Address
+    else if (message.includes('location') || message.includes('address') || message.includes('where') || 
+             message.includes('place') || message.includes('office')) {
+      return `📍 Our Location:
+A - 1/2, Shivaji industrial estate, chhabra compound, chhatrapati shivaji Maharaj Marg, Vakola bridge, Santacruz East, Mumbai -400055
 
-// Feel free to visit us or contact us for directions!`;
-//     }
+Feel free to visit us or contact us for directions!`;
+    }
     
-//     // Email
-//     else if (message.includes('email') || message.includes('mail')) {
-//       return `📧 Email Addresses:
-// • abengworks@yahoo.in
-// • abenginworks@gmail.com
+    // Email
+    else if (message.includes('email') || message.includes('mail')) {
+      return `📧 Email Addresses:
+• abengworks@yahoo.in
+• abenginworks@gmail.com
 
-// You can also use info@abenginworks.com for general inquiries.`;
-//     }
+You can also use info@abenginworks.com for general inquiries.`;
+    }
     
-//     // Experience/Years
-//     else if (message.includes('experience') || message.includes('years') || message.includes('established') || 
-//              message.includes('since') || message.includes('how long')) {
-//       return `🏆 Experience:
-// AB Engineering Works has been in business since 1997, bringing nearly three decades of specialized expertise in pharmaceutical packaging machinery.
+    // Experience/Years
+    else if (message.includes('experience') || message.includes('years') || message.includes('established') || 
+             message.includes('since') || message.includes('how long')) {
+      return `🏆 Experience:
+AB Engineering Works has been in business since 1997, bringing nearly three decades of specialized expertise in pharmaceutical packaging machinery.
 
-// We have 28+ years of experience serving 25+ leading manufacturers in the industry.`;
-//     }
+We have 28+ years of experience serving 25+ leading manufacturers in the industry.`;
+    }
     
-//     // Pricing/Quotes
-//     else if (message.includes('price') || message.includes('quote') || message.includes('cost') || 
-//              message.includes('how much') || message.includes('pricing')) {
-//       return `💰 Pricing & Quotes:
-// For detailed pricing and quotes, please contact us directly:
-// • Phone: 8108765006 or 9819214375
-// • Email: abengworks@yahoo.in or abenginworks@gmail.com
+    // Pricing/Quotes
+    else if (message.includes('price') || message.includes('quote') || message.includes('cost') || 
+             message.includes('how much') || message.includes('pricing')) {
+      return `💰 Pricing & Quotes:
+For detailed pricing and quotes, please contact us directly:
+• Phone: 8108765006 or 9819214375
+• Email: abengworks@yahoo.in or abenginworks@gmail.com
 
-// We'll provide you with a comprehensive quote based on your specific requirements.`;
-//     }
+We'll provide you with a comprehensive quote based on your specific requirements.`;
+    }
     
-//     // Greetings
-//     else if (message.includes('hello') || message.includes('hi') || message.includes('hey')) {
-//       return `Hello! Welcome to AB Engineering Works. I'm here to help you with information about our services, products, or any other inquiries. What would you like to know?`;
-//     }
+    // Greetings
+    else if (message.includes('hello') || message.includes('hi') || message.includes('hey')) {
+      return `Hello! Welcome to AB Engineering Works. I'm here to help you with information about our services, products, or any other inquiries. What would you like to know?`;
+    }
     
-//     // Unknown questions - show contact form
-//     else {
-//       setShowContactForm(true);
-//       return `I'd be happy to help you with that! To provide you with the most accurate information, could you please share your details? Our team will get back to you promptly.`;
-//     }
-//   };
+    // Unknown questions - show contact form
+    else {
+      setShowContactForm(true);
+      return `I'd be happy to help you with that! To provide you with the most accurate information, could you please share your details? Our team will get back to you promptly.`;
+    }
+  };
 
   return (
     <div className="bg-light text-dark">
       {/* Chatbot */}
-      {/* <div className="chatbot-container">
+      <div className="chatbot-container">
         {isChatOpen && (
           <div className="chat-window">
             <div className="chat-header">
@@ -298,7 +298,7 @@ function App() {
         >
           <i className="fas fa-comments"></i>
         </button>
-      </div> */}
+      </div>
 
       {/* Section 1: Welcome */}
       <header className="bg-white text-dark min-vh-100 d-flex align-items-center shadow-lg position-relative overflow-hidden">
@@ -400,7 +400,7 @@ function App() {
       </section>
 
       {/* Section 3: Core Expertise */}
-      {/* <section className="py-5 bg-light border-bottom">
+      <section className="py-5 bg-light border-bottom">
         <div className="container">
           <div className="text-center mb-5">
             <h2 className="fw-bold mb-3 text-primary">Core Expertise</h2>
@@ -442,10 +442,10 @@ function App() {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Section 4: Product Range */}
-      {/* <section className="py-5 bg-white border-bottom">
+      <section className="py-5 bg-white border-bottom">
         <div className="container">
           <div className="text-center mb-5">
             <h2 className="fw-bold mb-3 text-primary">Comprehensive Product Range</h2>
@@ -529,10 +529,10 @@ function App() {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Section 5: Why Choose Us */}
-      {/* <section className="py-5 bg-light border-bottom">
+      <section className="py-5 bg-light border-bottom">
         <div className="container">
           <div className="text-center mb-5">
             <h2 className="fw-bold mb-3 text-primary">Why Choose AB Engineering Works?</h2>
@@ -586,10 +586,10 @@ function App() {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Section 6: Partner With Us */}
-      {/* <section className="py-5 bg-white border-bottom">
+      <section className="py-5 bg-white border-bottom">
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-6">
@@ -648,17 +648,17 @@ function App() {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Last Section: Connect With Us */}
-      {/* <footer id="contact" className="pt-5 bg-gradient-primary text-white position-relative" style={{background: 'linear-gradient(90deg, #0f2027 0%, #2c5364 100%)'}}>
+      <footer id="contact" className="pt-5 bg-gradient-primary text-white position-relative" style={{background: 'linear-gradient(90deg, #0f2027 0%, #2c5364 100%)'}}>
         <div className="container pb-4">
           <h2 className="fw-bold mb-4 text-center">Connect With Us</h2>
           <div className="row justify-content-center g-4 align-items-stretch">
             <div className="col-12 col-md-6 d-flex flex-column justify-content-center">
-              <div className="mb-4 p-4 bg-white bg-opacity-10 rounded-4 shadow text-white h-100"> */}
+              <div className="mb-4 p-4 bg-white bg-opacity-10 rounded-4 shadow text-white h-100">
                 {/* Contact Details */}
-                {/* <div className="mb-3 fs-5">
+                <div className="mb-3 fs-5">
                   <div className="d-flex align-items-center mb-2">
                     <i className="fas fa-phone-alt me-3 fa-lg" style={{width: '20px'}}></i>
                     <span className="fw-semibold">Contact:</span>
@@ -693,8 +693,8 @@ function App() {
                   </div>
                 </div>
               </div>
-            </div> */}
-            {/* <div className="col-12 col-md-6 d-flex flex-column justify-content-center">
+            </div>
+            <div className="col-12 col-md-6 d-flex flex-column justify-content-center">
               <div className="contact-form h-100 mt-4 mt-md-0 bg-white bg-opacity-75 rounded-3 p-4 shadow">
                 <h5 className="fw-bold text-dark mb-3">Ask your queries</h5>
                 <form onSubmit={handleConnectFormSubmit}>
@@ -714,18 +714,18 @@ function App() {
                   {connectFormStatus && <div className={`mt-3 alert ${connectFormStatus.success ? 'alert-success' : 'alert-danger'}`}>{connectFormStatus.message}</div>}
                 </form>
               </div>
-            </div> */}
-          {/* </div>
+            </div>
+          </div>
         </div>
-      </footer> */}
+      </footer>
 
       {/* Location Section */}
-      {/* <section id="location" className="py-5 bg-white border-top">
+      <section id="location" className="py-5 bg-white border-top">
         <div className="container">
           <div className="text-center mb-4">
-            <h2 className="fw-bold text-primary mb-3">Our Location</h2> */}
+            <h2 className="fw-bold text-primary mb-3">Our Location</h2>
             {/* <p className="fs-5 text-muted mb-1">A - 1/2, Shivaji industrial estate, chhabra compound, chhatrapati shivaji Maharaj Marg, Vakola bridge, Santacruz East, Mumbai -400055</p> */}
-          {/* </div>
+          </div>
           <div className="row justify-content-center">
             <div className="col-12 col-md-10 col-lg-8">
               <div className="map-responsive" style={{width: '100%', maxWidth: '700px', margin: '0 auto'}}>
@@ -743,10 +743,10 @@ function App() {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Floating WhatsApp Button */}
-      {/* <div className="whatsapp-float">
+      <div className="whatsapp-float">
         <input type="checkbox" id="wa-fab-toggle" className="d-none" />
         <label htmlFor="wa-fab-toggle" className="wa-fab-label">
           <i className="fab fa-whatsapp"></i>
@@ -759,7 +759,7 @@ function App() {
             <i className="fab fa-whatsapp"></i> 9819214375
           </a>
         </div>
-      </div> */}
+      </div>
 
       <div className="bg-dark bg-opacity-75 py-3 w-100 text-center position-relative" style={{zIndex:2}}>
         <small className="text-white-50">&copy; 2025 A. B. Engineering . All rights reserved.</small>
